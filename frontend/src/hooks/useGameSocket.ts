@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-const SERVER_URL = "http://localhost:4000";
+const SERVER_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
 export const useGameSocket = (isMultiplayer: boolean) => {
     const socketRef = useRef<Socket | null>(null);
