@@ -17,7 +17,10 @@ export const useGameSocket = (isMultiplayer: boolean) => {
         if (!isMultiplayer) return;
 
         // 1. Kết nối
-        const socket = io(SERVER_URL);
+        const socket = io(SERVER_URL, {
+            transports: ['websocket'], // <--- QUAN TRỌNG: Bỏ qua polling, dùng luôn websocket
+            autoConnect: true
+        });
         socketRef.current = socket;
 
         socket.on('connect', () => {
