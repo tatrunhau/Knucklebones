@@ -42,12 +42,10 @@ app.get('/', (req, res) => {
 // 7. Cấu hình Socket.IO
 const io = new Server(server, {
     cors: {
-        // SỬA THÀNH DẤU SAO (*)
-        // Điều này cho phép Vercel, Localhost hay bất cứ đâu đều kết nối được
-        origin: "*", 
+        origin: "*",             // Chấp nhận tất cả nguồn
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header"],
-        credentials: true
+        credentials: false       // <--- SỬA THÀNH FALSE (Bắt buộc khi dùng origin: "*")
     }
 });
 
