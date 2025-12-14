@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 // 7. Cấu hình Socket.IO
 const io = new Server(server, {
     cors: {
-        origin: process.env.FRONTEND_URL || "http://localhost:3000",
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
